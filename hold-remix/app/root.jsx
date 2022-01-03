@@ -10,7 +10,16 @@ import {
 export function meta() {
   return { title: "Angelique-Remix-app" };
 }
-
+const allColors = {
+  "app-blue": "#1E90FF",
+  "app-red": "#8B0000",
+  "app-gray": "#A9A9A9",
+  "app-yellow": "#FFF8DC",
+  "app-violet": "#9932CC",
+  "app-cyan": "#008B8B",
+  "app-white": "#F8F8FF",
+  "app-lavendar" : "#FFF0F5"
+}
 export default function App() {
   return (
     <html lang="en">
@@ -20,7 +29,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4", backgroundColor: "darkviolet" }}>
+      <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4", backgroundColor: allColors["app-lavendar"] }}>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
