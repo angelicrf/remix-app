@@ -1,14 +1,17 @@
 import { Link, useLoaderData } from 'remix'
 import { Fragment } from 'react'
+import { db } from '~/utils/db.server.ts'
 
-export const loader = () => {
+export const loader = async () => {
+
   const data = {
-    allPosts: [
-      { userId: 1, description: "this one Description" },
-      { userId: 2, description: "this two Description" },
-      { userId: 3, description: "this three Description" },
-      {userId: 4, description: "this four Description"},
-   ]
+    allPosts: 
+      await db.user.findMany({
+        take: 22,
+        select: { userId: true, subject: true, description: true },
+        orderBy: {postedTime: 'asc'}     
+     }) 
+   
   }
   return data
 }
@@ -23,12 +26,14 @@ function NewItems() {
         <Link to="/posts/newpost" className="btn btn-dark">New Post</Link>
         </div>
       <ul className='posts-list'>
-        {allPosts.map(dta => (
-          <Fragment>
-            <li key={dta.userId}>
-            <Link to={dta.userId}>
-              {dta.description}
-             </Link>
+        {allPosts.map((dta, index) => (
+          <Fragment key={index}>
+            <li key={index}>
+              <Link key={index} to={dta.userId}>
+                {dta.userId}
+                {dta.description}
+              </Link>
+              <h3>{new Date().toString()}</h3>
             </li>   
           </Fragment>
         ))

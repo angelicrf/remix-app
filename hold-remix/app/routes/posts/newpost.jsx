@@ -1,16 +1,20 @@
 import { Link, redirect } from 'remix'
 import { Fragment } from 'react'
+import { db } from '~/utils/db.server.ts'
 
-export const action = async({request}) => {
+export const action = async ({ request }) =>
+{
     const formInfo = await request.formData()
-    const getName = formInfo.get('subject')
-    const getDescription = formInfo.get('description')
+    const subject = formInfo.get('subject')
+    const description = formInfo.get('description')
 
-    const submitInfo = { getName, getDescription }
-    console.log(submitInfo)
-    //send them to database
-
-   return redirect('/posts')
+    const submitInfo = { subject, description }
+   
+  /*   if (getName == null || getDescription == null) {
+        return redirect('/posts/emptyerrors')
+    } */
+    const newData = await db.user.create({data: submitInfo})
+    return redirect(`/posts/${newData.userId}`)
 }
 
 function newpost() {
@@ -36,3 +40,13 @@ function newpost() {
 }
 
 export default newpost
+export const CustomeMadeError = () => {
+    return redirect('/posts/emptyerrors')
+}
+export const ErrorBoundary = ({ error }) => {
+    console.log(error.message)
+    return (
+        < div >
+            <p>The page you try to sumbit has an error specifying {error.message}</p>
+        </div>)     
+}
