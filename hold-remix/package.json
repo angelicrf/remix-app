@@ -9,7 +9,7 @@
     "postinstall": "remix setup node",
     "start": "remix-serve build",
     "lint": "eslint --fix --ext .js,.jsx app",
-    "prettier": "prettier --write '**/*.{jsx,js,css}'"
+    "prettier": "prettier --write 'app/**/*.{jsx,js,css}'"
   },
   "dependencies": {
     "@prisma/client": "^3.7.0",
