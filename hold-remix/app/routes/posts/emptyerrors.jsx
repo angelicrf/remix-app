@@ -1,5 +1,5 @@
 import { Link } from "remix";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 
 const emptyerrors = () => {
   return (

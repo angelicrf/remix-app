@@ -1,5 +1,5 @@
 import { Link, useLoaderData } from "remix";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { db } from "~/utils/db.server.ts";
 
 export const loader = async () => {

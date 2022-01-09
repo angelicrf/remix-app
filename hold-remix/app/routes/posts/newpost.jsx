@@ -1,5 +1,5 @@
 import { Link, redirect } from "remix";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { db } from "~/utils/db.server.ts";
 
 export const action = async ({ request }) => {
@@ -9,7 +9,7 @@ export const action = async ({ request }) => {
 
   const submitInfo = { subject, description };
 
-  if (getName == null || getDescription == null) {
+  if (subject == null || description == null) {
     return redirect("/posts/emptyerrors");
   }
   const newData = await db.user.create({ data: submitInfo });

@@ -1,3 +1,5 @@
+import React from "react";
+
 const allTxtColors = {
   "app-blue": "#1E90FF",
   "app-red": "#8B0000",
@@ -8,7 +10,7 @@ const allTxtColors = {
   "app-white": "#F8F8FF",
   "app-lavendar": "#FFF0F5",
 };
-export default (Index) => {
+export default function Index() {
   return (
     <div
       style={{
@@ -20,4 +22,4 @@ export default (Index) => {
       <h1>Angelique Remix-App</h1>
     </div>
   );
-};
+}

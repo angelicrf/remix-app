@@ -1,4 +1,4 @@
-import react, { Fragment } from "react";
+import React, { Fragment } from "react";
 import {
   Link,
   Links,
@@ -34,7 +34,7 @@ const allColors = {
   "app-white": "#F8F8FF",
   "app-lavendar": "#FFF0F5",
 };
-export default (App) => {
+export default function App() {
   return (
     <AllDocsApp>
       <LayOut>
@@ -42,7 +42,7 @@ export default (App) => {
       </LayOut>
     </AllDocsApp>
   );
-};
+}
 const AllDocsApp = ({ children, title }) => {
   return (
     <html lang="en">
